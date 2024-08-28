@@ -33,7 +33,7 @@
     <footer class="bg-white shadow-md mt-8 rounded-lg">
         <div class="container mx-auto px-4 py-4 text-center">
             <p>&copy; {{ date('Y') }} MyBlog. All rights reserved.</p>
-            <a href="{{ route('logout') }}" class="underline text-lg text-red-500">Logout</a>
+            <a href="{{ route('logout') }}" class="underline text-lg text-red-500">SignOut</a>
         </div>
     </footer>
 </body>
