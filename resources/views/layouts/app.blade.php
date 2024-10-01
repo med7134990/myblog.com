@@ -11,13 +11,22 @@
         <nav class="bg-blue-500 shadow-md rounded  mt-3 max-w-full">
             <div class="container mx-auto px-4 ">
                 <div class="flex justify-between items-center py-4 text-white ">
-                    <a href="{{ route('home') }}" class="text-xl font-bold hover:underline">MyBlog</a>
+                    @if (auth()->check())
+                    <a href="{{ route('users.profile', ['id' => auth()->user()->id]) }}" class="text-xl font-bold hover:underline">MyBlog</a>
+                      @else
+                      <a href="{{ route('showlog') }}">Login to access your Blog</a>  
+                    @endif
                     <div class="space-x-4 text-white">
-                        <a href="{{ route('home') }}" class="hover:underline">Home</a>
-                        
+                        @if (auth()->check())
+                        <a href="{{ route('home') }}" class="hover:underline">Home</a>    
+                        <a href="{{ route('users.index') }}" class="hover:underline">Users</a>
+                       
+                        @else
+                        <a href="{{ route('home') }}" class="hover:underline">Home</a>    
                         <a href="{{ route('users.index') }}" class="hover:underline">Users</a>
                         <a href="{{ route('showlog') }}" class="hover:underline">Login</a>
                         <a href="{{ route('showreg') }}" class="hover:underline">Register</a>
+                        @endif
                     </div>
                 </div>
             </div>

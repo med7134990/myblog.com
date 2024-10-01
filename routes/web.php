@@ -1,5 +1,6 @@
 <?php
-                                     
+
+use App\Http\Controllers\CommentController;
 use App\Http\Controllers\LoginController;
 use App\Http\Controllers\RegistrationController;
 use Illuminate\Support\Facades\Route;
@@ -27,7 +28,7 @@ Route::get('/logout', [LoginController::class, 'logout'])->name('logout');
 //this route shows all the users
 Route::get('/users/index', [UsersController::class, 'index'])->name('users.index');
 
-Route::get('/users/{id}', [UsersController::class, 'profile'])->middleware('auth')->name('users.profile');
+Route::get('/users/{id}', [UsersController::class, 'profile'])->name('users.profile');
 
 Route::get('/posts/create', [PostController::class, 'showPostForm'])->name('posts');
 Route::post('/posts', [PostController::class, 'store'])->name('posts.store');
@@ -38,5 +39,7 @@ Route::post('/update', [profileController::class, 'update'])->name('profile.upda
 
 //Route::get('/log/papa', [LoginController::class, 'showpapa'])->name('showpapa');
 
-
+//Route::get('/comments/create/{id}', [CommentController::class, 'showComentForm'])->name('comments.create');
+//Route::post('/comments', [CommentController::class, 'makeComment'])->name('comment.make');
+Route::post('/posts/{post}/comments', [CommentController::class, 'makeComment'])->name('comment.make');
     

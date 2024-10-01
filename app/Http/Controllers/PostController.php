@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Comment;
 use App\Models\Post;
 use App\Models\User;
 use Faker\Guesser\Name;
@@ -26,7 +27,9 @@ class PostController extends Controller
 
     public function index(){
         $posts = Post::with('user')->latest()->get();
-        $users = User::all();
+        $comment=Comment::all();
+        //dd($comment);
+       // $users = User::all();
         //dd($users);
         return view('home', compact('posts'));
     }
@@ -36,5 +39,9 @@ class PostController extends Controller
         $users = User::all();
         //dd($users);
         return view('users.profile', compact('posts'));
+    }
+
+    public function showComment(){
+        $comment=Comment::all();
     }
 }

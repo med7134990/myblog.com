@@ -18,7 +18,8 @@
                         <li class="mb-4 border-b pb-2">
                             <h2 class="text-xl font-semibold">{{ $user->name }}</h2>
                             <p>{{ $user->email }}</p>
-
+                            <p>Created on: {{ $user->created_at }}</p>
+                            
                             
                         </li>
                     </div>
